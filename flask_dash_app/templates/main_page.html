@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SmartHome</title>
+  <style>
+    header{
+      display: flex;
+    }
+    main{
+      display: flex;
+      
+      background-color: #bee5d3;
+      margin-top: 18px;
+      border-radius: 10px;
+    }
+    footer{
+
+
+    }
+    .logo {
+     display: inline-flex;
+    }
+   .nav_menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 90px;
+   }
+   .nav_menu li{
+      min-width : 8em;
+      float: right;
+      margin-right: 1em;
+      text-align: center;
+    }
+    .nav_menu li a {
+      display: block;
+      padding: 0.2em;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0 0.2em 0;
+    }
+    .nav_menu li a:hover{
+      background-color: #bee5d3;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+   .photo_logo{
+    width: 500px;
+    height: 200px;
+   }
+   img{
+    width: 175px;
+    height: 175px;
+   }
+   .photo_product{
+    width: 350px;
+    height: 350px;
+    border-radius: 5px;
+    margin: 5px 25px 0;
+   }
+  .icon-logo{
+    list-style: none;
+    margin: 0 5px 0;
+  }
+  .text_projcet{
+    font-size: 18px;
+  }
+  .first_icon, .second_icon{
+    display: flex;
+  }
+  .buttom_link{
+    text-decoration: none;
+    border: 1px solid #0f1123;
+    font-size: 20px;
+    border-radius: 5px;
+    color: black;
+    padding: 8px;
+      }
+  .buttom_link:hover{
+    color: white;
+  background-color: #0a043c;
+  }
+  </style>
+
+</head>
+<body>
+  <header>
+    <div >
+      <a class ="logo" href = "#"><img class="photo_logo" src="/static/logo.jpg" alt="logo"></a>
+    </div>
+    <div>
+      <ul class = "nav_menu">
+        {% if session.Logged_in %}
+        <li><a href = "{{url_for('security_page')}}">Захист</a></li>
+        <li><a href = "/app_dash_lite/">Вода</a></li>
+        <li><a href = "/app_dash_temperature/">Температура</a></li>
+        <li><a href = "/dashapp/">Освітлення</a></li>
+        {% endif %}
+        {%if not session.Logged_in %}
+        <li><a href = "{{url_for('admin_page')}}">Вхід в систему</a></li>
+        {% endif %}
+        {%if session.Logged_in %}
+        <li><a href = "{{url_for('logout')}}">Вихід з системи</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div>
+      <ul class="icon-logo">
+        <div class="first_icon">
+          <li><a href="#"><img src ="/static/Tilda_Icons_1ed_lightbulb 14.svg"></a></li>
+          <li><a href="#"><img src ="/static/Tilda_Icons_1ed_list.svg"></a></li>
+        </div>
+        <div class="second_icon">
+          <li><a href="#"><img src ="/static/Tilda_Icons_1ed_discount.svg"></a></li>
+          <li><a href="{{url_for('feedback_page')}}"><img src ="/static/Tilda_Icons_1ed_mail.svg"></a></li>
+        </div>      
+      </ul>
+    </div>
+    <div><a href="#"><img  class = "photo_product" src="/static/smart-box.jpg" alt="project"></a></div>
+    <div class="text_projcet"><h3 align="center">SMART HOME це проект розроблений як MVP  </h3></br><p> Мінімально життєздатний продукт (minimum viable produc) - продукт, що володіє мінімальними, але достатніми для</br> задоволення перших споживачів функціями.</p> 
+      <p>Основне завдання - отримання зворотного зв'язку для формування гіпотез подальшого розвитку продукту.</p>За допомогою даної системи можна керувати температурою в приміщені, освітленням, водопостачанням та навіть певний захист оселі.
+      <p align="center"><a href="{{url_for('add_contact')}}"  class="buttom_link">Детальніше про систему &#8594</a></p>
+    </div>
+  </main>
+  <footer>
+      {% if not session.Logged_in %}
+  
+    <h3>{% for message in get_flashed_messages() %}
+    {{message}}</br>
+  {% endfor %}</h3> 
+  
+  {% endif %}
+    <!--<div>
+      <ul class="nav_menu">
+        <li style="float: left"><a href="#">Вхід в систему</a></li>
+        <li><a href="#">Про систему</a></li>
+      </ul>
+    </div>-->
+  </footer>
+</body>
+
+</html>
+

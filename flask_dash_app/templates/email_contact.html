@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		main{
+			display: flex;
+
+		}
+		  header{
+		
+      display: flex;
+    }
+		.logo {
+     display: inline-flex;
+    }
+   .nav_menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 90px;
+   }
+   .nav_menu li{
+      min-width : 8em;
+      float: right;
+      margin-right: 0.5em;
+      text-align: center;
+    }
+    .nav_menu li a {
+      display: block;
+      padding: 0.2em;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0 0.2em 0;
+    }
+    .nav_menu li a:hover{
+      background-color: #bee5d3;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+   .photo_logo{
+    width: 500px;
+    height: 200px;
+   }
+   .form_sender_email{
+   	margin-top: 50px;
+   	border: 2px;
+   	border-radius: 5px;
+   	height: 550px;
+   	width: 425px;
+   	font-size: 20px;
+   	padding: 52px 44px;
+   	box-shadow: 0 0 10px rgba(0,0,0,1);
+   	margin-left: 50px;
+
+   }
+
+   .button_send{
+   		width: 377px;
+   		height: 48px;
+   		border-radius: 12px;
+   		font-size: 20px;
+   		margin: 20px;
+   }
+   .button_send:hover{
+    color: white;
+  	background-color: #0a043c;
+  }
+   .info_team{
+   	width: 500px;
+   	height: 500px;
+   	font-size: 20px;
+   	margin-top: 100px;
+   margin-left: 40px;
+   }
+   .text_send{
+   	width: 377px;
+   	height: 110px;
+   	border-radius: 10px ;
+   }
+   input,select{
+   	width: 377px;
+   	height: 48px;
+   	border-radius: 10px ;
+   }
+   label{
+   	font-size: 25px;
+   }
+   .in_text{
+   	margin: 20px;
+   }
+
+
+	</style>
+</head>
+<body>
+	<header>
+    <div >
+      <a class ="logo" href = "{{url_for('home_page')}}"><img class="photo_logo" src="/static/logo.jpg" alt="logo"></a>
+    </div>
+    <div>
+      <ul class = "nav_menu">
+        {% if session.Logged_in%}
+        <li><a href = "{{url_for('security_page')}}">Захист</a></li>
+        <li><a href = "/app_dash_lite/">Вода</a></li>
+        <li><a href = "/app_dash_temperature/">Температура</a></li>
+        <li><a href = "/dashapp/">Освітлення</a></li>
+        {% endif %}
+        {%if not session.Logged_in %}
+        <li><a href = "{{url_for('admin_page')}}">Вхід в систему</a></li>
+        {% endif %}
+        {%if session.Logged_in %}
+        <li><a href = "{{url_for('logout')}}">Вихід з системи</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+  <main >
+  	<div class="info_team">
+  		<h1>Звязок з нашою командою</h1>
+  		<h2>Чим ми можем допопмогти:</h2>
+  		<ul>
+  			<li>Надати більше інформації про наш продукт</li>
+  			<li>Розробим спеціальне рішення для вас</li>
+  			<li>Стати партнером</li>
+  			<li>Приєднатись до команди розробників</li>
+  		</ul>
+  	</div>
+  	<div class="form_sender_email">
+  		<form action={{url_for('feedback_page')}} method = post>
+  			<div class = "in_text">
+  				<label>Пошта:</label></br>
+  				<input type = "text" name="email_feedback" required></br>
+  			</div>
+  			<div class = "in_text">
+  				<label>Імя:</label></br>
+  				<input type = "text" name = "Name" required ></br>
+  			</div>
+        <div class = "in_text">
+          <label>Тема звернення:</label></br>
+          <select name = "subject_feedback" required >
+            <option>Проблема з додатком</option>
+            <option>Проблема з апаратним забезпечення</option>
+            <option>Долучитись до команди</option>
+            <option>Стати пртнером</option>
+          </select>
+        </div>
+  			<div class = "in_text">
+  				<label>Опис запитання:</label></br>
+  				<textarea type="text" name ="content" class = "text_send" required></textarea></br>
+  			</div>
+  			<input type="submit" value="Відправити" class="button_send">
+  		</form>
+  	</div>
+  </main>
+  <footer></footer>
+</body>
+
+</html>

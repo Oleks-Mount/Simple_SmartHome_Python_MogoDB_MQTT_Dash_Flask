@@ -1,0 +1,43 @@
+
+
+.input_button{
+	border: 2px solid;
+	border-radius: 12px;
+	width: 250px;
+	height: 50px;
+	font-size: 20px;
+}
+.input_button:hover{
+	background-color: #0a043c;
+	color: white;
+}
+.hemb_input{
+	box-shadow: 0 0 10px rgba(0,0,0,1);
+	border-radius: 12px;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+.link_a{
+	border: 2px solid;
+	border-radius: 12px;
+	margin: 10px;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 20px;
+	margin-top: 25px;
+}
+.link_a:hover{
+	background-color: #0a043c;
+	color: white;
+}
+
+
+.graph{
+       margin-top: 50px;
+}
+.lite{
+margin-top: 25px;
+}

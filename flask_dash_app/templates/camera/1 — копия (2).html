@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SmartHome</title>
+  <style>
+    header{
+      
+    }
+    main{
+      margin-top: 18px;
+      border-radius: 10px;
+      display: flex;
+    }
+    .logo {
+     display: inline-flex;
+    }
+   .nav_menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 90px;
+   }
+   .nav_menu li{
+      min-width : 8em;
+      float: right;
+      margin-right: 1em;
+      text-align: center;
+    }
+    .nav_menu li a {
+      display: block;
+      padding: 0.2em;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0 0.2em 0;
+    }
+    .nav_menu li a:hover{
+      background-color: #bee5d3;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+   .list_camera li{
+      min-width : 8em;
+      display: inline-flex;
+      margin-right: 1em;
+      text-align: center;
+      font-size: 50px;
+    }
+    .list_camera li a {
+      display: block;
+      padding: 0.2em;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0 0.2em 0;
+    }
+
+
+  </style>
+
+</head>
+<body>
+  <header>
+    <div >
+      <a class ="logo" href = "#"><img class="photo_logo" src="/static/logo.jpg" alt="logo"></a>
+    </div>
+    <div>
+      <ul class = "nav_menu">
+        {% if session.Logged_in %}
+        <li><a href = "{{url_for('security_page')}}">Захист</a></li>
+        <li><a href = "/app_dash_lite/">Вода</a></li>
+        <li><a href = "/app_dash_temperature/">Температура</a></li>
+        <li><a href = "/dashapp/">Освітлення</a></li>
+        {% endif %}
+        {%if not session.Logged_in %}
+        <li><a href = "{{url_for('admin_page')}}">Вхід в систему</a></li>
+        {% endif %}
+        {%if session.Logged_in %}
+        <li><a href = "{{url_for('logout')}}">Вихід з системи</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div> 
+      <iframe 
+        src="http://37.17.220.82"
+        width="900"
+        height="700">
+      </iframe>
+    </div>
+    <div>
+      <ul class = "list_camera">
+        <li><a href = "C:\Users\oleks\PycharmProjects\Projects_web_form\flask_dash_app\templates\camera\1.html">1</a></li>
+        <li><a href = "C:\Users\oleks\PycharmProjects\Projects_web_form\flask_dash_app\templates\camera\2.html">2</a></li>
+        <li><a href = "C:\Users\oleks\PycharmProjects\Projects_web_form\flask_dash_app\templates\camera\3.html">3</a></li>
+        <li><a href = "C:\Users\oleks\PycharmProjects\Projects_web_form\flask_dash_app\templates\camera\4.html">4</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+  </footer>
+</body>
+
+</html>
+

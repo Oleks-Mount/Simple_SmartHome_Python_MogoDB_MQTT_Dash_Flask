@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SmartHome</title>
+  <style>
+    header{
+      display: flex;
+    }
+    main{
+      display: flex;
+      
+      
+      margin-top: 18px;
+      border-radius: 10px;
+    }
+    footer{
+
+
+    }
+    .logo {
+     display: inline-flex;
+    }
+   .nav_menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 90px;
+   }
+   .nav_menu li{
+      min-width : 8em;
+      float: right;
+      margin-right: 1em;
+      text-align: center;
+    }
+    .nav_menu li a {
+      display: block;
+      padding: 0.2em;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0 0.2em 0;
+    }
+    .nav_menu li a:hover{
+      background-color: #bee5d3;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+   .photo_logo{
+    width: 500px;
+    height: 200px;
+   }
+   img{
+    width: 175px;
+    height: 175px;
+   }
+   .photo_product{
+    width: 350px;
+    height: 350px;
+    border-radius: 5px;
+    margin: 5px 25px 0;
+   }
+  .icon-logo{
+    list-style: none;
+    margin: 0 5px 0;
+  }
+  .text_projcet{
+    font-size: 18px;
+  }
+  .first_icon, .second_icon{
+    display: flex;
+  }
+  .buttom_link{
+    text-decoration: none;
+    border: 1px solid #0f1123;
+    font-size: 20px;
+    border-radius: 5px;
+    color: black;
+    padding: 8px;
+      }
+  .buttom_link:hover{
+    color: white;
+  background-color: #0a043c;
+  }
+      .list_camera li  {
+list-style: none;
+      text-decoration: none;
+    }
+
+
+  </style>
+
+</head>
+<body>
+  <header>
+    <div >
+      <a class ="logo" href = "{{url_for('home_page')}}"><img class="photo_logo" src="/static/logo.jpg" alt="logo"></a>
+    </div>
+    <div>
+      <ul class = "nav_menu">
+        {% if session.Logged_in %}
+        <li><a href = "{{url_for('security_page')}}">Захист</a></li>
+        <li><a href = "/app_dash_lite/">Вода</a></li>
+        <li><a href = "/app_dash_temperature/">Температура</a></li>
+        <li><a href = "/dashapp/">Освітлення</a></li>
+        {% endif %}
+        {%if not session.Logged_in %}
+        <li><a href = "{{url_for('admin_page')}}">Вхід в систему</a></li>
+        {% endif %}
+        {%if session.Logged_in %}
+        <li><a href = "{{url_for('logout')}}">Вихід з системи</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+  <main>
+      <ul class="list_camera">
+        <li><iframe 
+        src="http://195.130.108.4:81"
+        width="900"
+        height="700">
+      </iframe></li>
+        <li><iframe 
+        src="http://129.132.117.46"
+        width="900"
+        height="700">
+      </iframe></li>
+        <li><iframe 
+        src="http://37.17.220.82"
+        width="900"
+        height="700">
+      </iframe></li>
+        <li><iframe 
+        src="http://129.132.117.46"
+        width="900"
+        height="700">
+      </iframe></li>
+      </ul>
+  </main>
+  <footer>
+  </footer>
+</body>
+
+</html>
+
